@@ -1,0 +1,106 @@
+.svgCat {
+	fill: #374151;
+}
+
+.svgCat .cls-1 {
+	fill: #d6b49a;
+}
+.svgCat .cls-1,
+.svgCat .cls-10,
+.svgCat .cls-11,
+.svgCat .cls-13,
+.svgCat .cls-14,
+.svgCat .cls-15,
+.svgCat .cls-17,
+.svgCat .cls-2,
+.svgCat .cls-4,
+.svgCat .cls-5,
+.svgCat .cls-6 {
+	stroke: #000;
+}
+.svgCat .cls-1,
+.svgCat .cls-11,
+.svgCat .cls-13,
+.svgCat .cls-14,
+.svgCat .cls-16,
+.svgCat .cls-8 {
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.svgCat .cls-1,
+.svgCat .cls-10,
+.svgCat .cls-11,
+.svgCat .cls-12,
+.svgCat .cls-13,
+.svgCat .cls-14,
+.svgCat .cls-15,
+.svgCat .cls-16,
+.svgCat .cls-17,
+.svgCat .cls-2,
+.svgCat .cls-3,
+.svgCat .cls-4,
+.svgCat .cls-5,
+.svgCat .cls-6,
+.svgCat .cls-7,
+.svgCat .cls-8,
+.svgCat .cls-9 {
+	stroke-width: 3px;
+}
+.svgCat .cls-2 {
+	fill: #020202;
+}
+.svgCat .cls-10,
+.svgCat .cls-12,
+.svgCat .cls-15,
+.svgCat .cls-17,
+.svgCat .cls-2,
+.svgCat .cls-3,
+.svgCat .cls-4,
+.svgCat .cls-5,
+.svgCat .cls-6,
+.svgCat .cls-7,
+.svgCat .cls-9 {
+	stroke-miterlimit: 10;
+}
+.svgCat .cls-3 {
+	fill: #818181;
+}
+.svgCat .cls-12,
+.svgCat .cls-16,
+.svgCat .cls-3,
+.svgCat .cls-7,
+.svgCat .cls-8,
+.svgCat .cls-9 {
+	stroke: #191818;
+}
+.svgCat .cls-4 {
+	fill: #dcdbda;
+}
+.svgCat .cls-5 {
+	fill: #4ea7f1;
+}
+.svgCat .cls-14,
+.svgCat .cls-6 {
+	fill: #f8f3ed;
+}
+.svgCat .cls-16,
+.svgCat .cls-7 {
+	fill: #333;
+}
+.svgCat .cls-13,
+.svgCat .cls-8 {
+	fill: none;
+}
+.svgCat .cls-9 {
+	fill: #f8f59c;
+}
+.svgCat .cls-10,
+.svgCat .cls-11 {
+	fill: #f3d2c9;
+}
+.svgCat .cls-15 {
+	fill: #8bb174;
+}
+.svgCat .cls-17 {
+	fill: #da4e22;
+}

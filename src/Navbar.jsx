@@ -20,9 +20,9 @@ const Navbar = () => {
 							stroke='currentColor'
 						>
 							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
-								stroke-width='2'
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								strokeWidth='2'
 								d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'
 							></path>
 						</svg>
@@ -42,9 +42,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<polyline points='22 12 16 12 14 15 10 15 8 12 2 12'></polyline>
 							<path
@@ -57,7 +57,7 @@ const Navbar = () => {
 				</li>
 				<li className='hover:bg-gray-100'>
 					<Link
-						to='/task'
+						to='/tasks'
 						className='h-16 px-6 flex flex justify-center items-center w-full
 				focus:text-orange-500'
 					>
@@ -69,9 +69,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'></path>
 						</svg>
@@ -91,9 +91,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<polyline points='3 6 5 6 21 6'></polyline>
 							<path
@@ -118,9 +118,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<circle cx='9' cy='21' r='1'></circle>
 							<circle cx='20' cy='21' r='1'></circle>
@@ -146,9 +146,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<circle cx='12' cy='12' r='3'></circle>
 							<path
@@ -186,9 +186,9 @@ const Navbar = () => {
 							viewBox='0 0 24 24'
 							fill='none'
 							stroke='currentColor'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						>
 							<path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9'></path>
 							<path d='M13.73 21a2 2 0 0 1-3.46 0'></path>
@@ -211,9 +211,9 @@ const Navbar = () => {
 						viewBox='0 0 24 24'
 						fill='none'
 						stroke='currentColor'
-						stroke-width='2'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='2'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					>
 						<path d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'></path>
 						<polyline points='16 17 21 12 16 7'></polyline>

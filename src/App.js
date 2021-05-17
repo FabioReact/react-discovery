@@ -1,13 +1,13 @@
 // import Hello from './Hello' // Import par défaut
 // import { Hello } from './Hello' // Import nommé
 // import Button from './Button'
-import { Task } from './Task'
 // import Lifecycle from './Lifecycle'
 import Login from './Login'
 // import { useState } from 'react'
 import Navbar from './Navbar'
 import { Route, Switch } from 'react-router-dom'
 import Page404 from "./Page404";
+import TaskList from "./TaskList";
 
 function App() {
 	// Méthode pure
@@ -22,8 +22,8 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/task">
-            <Task nom="Apprendre react" statut="En cours" description="Lorem ipsum" />
+          <Route path="/tasks">
+            <TaskList />
           </Route>
           <Route path="/" exact>
             <h1>Je suis sur la page d'accueil</h1>

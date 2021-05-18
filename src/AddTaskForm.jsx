@@ -1,17 +1,77 @@
-import { useState } from "react"
+import { useState, useReducer } from "react"
+import { v4 as uuidv4 } from 'uuid';
 import styles from "./addTaskForm.module.css"
 
+const NAME_ADDED = "NAME_ADDED"
+const DESC_ADDED = "DESC_ADDED"
+const DEADLINE = "DEADLINE"
+const ERRORS = "ERRORS"
+
+const reducer = (state, action) => {
+	switch (action.type) {
+		case NAME_ADDED:
+			return {
+				...state,
+				newTask: action.value,
+				newTaskError: false,
+			}
+		case DESC_ADDED: 
+			return {
+				...state,
+				description: action.value,
+			}
+		case "selectAdded": 
+			return {
+				...state,
+				select: action.value,
+				selectError: false,
+			}
+		case DEADLINE: 
+			return {
+				...state,
+				deadline: action.value,
+				deadlineError: false,
+			}
+		case ERRORS: {
+			return {
+				...state,
+				...action.payload
+			}
+		}
+		default:
+			throw new Error("Action type unknown")
+	}
+}
+
 const AddTaskForm = ({ callback }) => {
-	const [newTask, setNewTask] = useState('')
-	const [description, setDescription] = useState('')
-	const [select, setSelect] = useState('')
+	const initialState = {
+		newTask: '',
+		newTaskError: false,
+		description: '',
+		select: '',
+		selectError: false,
+		deadline: '',
+		deadlineError: false,
+	}
+
+	const [state, dispatch] = useReducer(reducer, initialState)
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault()
+		if (!state.newTask || !state.select || !state.deadline) {
+			dispatch({type: ERRORS, payload: {
+				newTaskError: !state.newTask,
+				selectError: !state.select,
+				deadlineError: !state.deadline,
+			}})
+			return
+		}
 		callback({
-			newTask,
-			description,
-			select,
+			id: uuidv4(),
+			name: state.newTask,
+			status: state.select,
+			description: state.description,
+			deadline: state.deadline,
 		})
 	}
 
@@ -25,14 +85,13 @@ const AddTaskForm = ({ callback }) => {
 							type="text"
 							name="task"
 							id="task"
-							value={newTask}
-							onChange={e => setNewTask(e.target.value)}
+							value={state.newTask}
+							onChange={e => dispatch({type: NAME_ADDED, value: e.target.value})}
 							placeholder=" "
-							required
 							className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
 						/>
 						<label htmlFor="task" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Nouvelle tâche</label>
-						{/* <span className="text-sm text-red-600 hidden" id="error">Un nom de tâche est requis</span> */}
+						{state.newTaskError && <span className="text-sm text-red-600">Un nom de tâche est requis</span>}
 					</div>
 		
 					<div className="relative z-0 w-full mb-5">
@@ -40,20 +99,20 @@ const AddTaskForm = ({ callback }) => {
 							type="text"
 							name="description"
 							id="description"
-							value={description}
-							onChange={e => setDescription(e.target.value)}
+							value={state.description}
+							onChange={e => dispatch({type: DESC_ADDED, value: e.target.value})}
 							placeholder=" "
 							className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
 						/>
 						<label htmlFor="description" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Description</label>
-						{/* <span className="text-sm text-red-600 hidden" id="error">Description requise</span> */}
+						{/* <span className="text-sm text-red-600">Description requise</span> */}
 					</div>
 
 					<div className="relative z-0 w-full mb-5">
 						<select
 							name="select"
-							value={select}
-							onChange={function (e) {setSelect(e.target.value)}}
+							value={state.select}
+							onChange={e => dispatch({type: 'selectAdded', value: e.target.value})}
 							className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
 						>
 							<option value="" disabled hidden></option>
@@ -61,8 +120,8 @@ const AddTaskForm = ({ callback }) => {
 							<option value="IN_PROGRESS">En cours</option>
 							<option value="DONE">Terminé</option>
 						</select>
-						<label htmlFor="select" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Select an option</label>
-						{/* <span className="text-sm text-red-600 hidden" id="error">Option has to be selected</span> */}
+						<label htmlFor="select" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Statut de la tâche</label>
+						{state.selectError && <span className="text-sm text-red-600">Un statut doit être sélectionné</span>}
 					</div>
 		
 					<div className="flex flex-row space-x-4">
@@ -70,27 +129,17 @@ const AddTaskForm = ({ callback }) => {
 							<input
 								type="text"
 								name="date"
+								id="deadline"
 								placeholder=" "
+								value={state.deadline}
 								onClick={(e) => {
-									console.log(e)
 									e.target.type = "date"
 								}}
-								// onclick="this.setAttribute('type', 'date');"
+								onChange={e => dispatch({type: DEADLINE, value: e.target.value})}
 								className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
 							/>
-							<label htmlFor="date" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Date</label>
-							{/* <span className="text-sm text-red-600 hidden" id="error">Date is required</span> */}
-						</div>
-						<div className="relative z-0 w-full">
-							<input
-								type="text"
-								name="time"
-								placeholder=" "
-								// onclick="this.setAttribute('type', 'time');"
-								className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-							/>
-							<label htmlFor="time" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Time</label>
-							{/* <span className="text-sm text-red-600 hidden" id="error">Time is required</span> */}
+							<label htmlFor="deadline" className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Deadline</label>
+							{state.deadlineError && <span className="text-sm text-red-600">Date requise</span>}
 						</div>
 					</div>
 		
@@ -104,30 +153,7 @@ const AddTaskForm = ({ callback }) => {
 				</form>
 			</div>
 		</div>
-		
-		// <script>
-		// 	'use strict'
-		
-		// 	document.getElementById('button').addEventListener('click', toggleError)
-		// 	const errMessages = document.querySelectorAll('#error')
-		
-		// 	function toggleError() {
-		// 		// Show error message
-		// 		errMessages.forEach((el) => {
-		// 			el.classList.toggle('hidden')
-		// 		})
-		
-		// 		// Highlight input and label with red
-		// 		const allBorders = document.querySelectorAll('.border-gray-200')
-		// 		const allTexts = document.querySelectorAll('.text-gray-500')
-		// 		allBorders.forEach((el) => {
-		// 			el.classList.toggle('border-red-600')
-		// 		})
-		// 		allTexts.forEach((el) => {
-		// 			el.classList.toggle('text-red-600')
-		// 		})
-		// 	}
-		// </script>
+
 	)
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import AddTaskForm from "./AddTaskForm"
 import TaskTable from "./TaskTable"
 
-const TaskList = () => {
+const TaskList = ({ darkMode }) => {
 	const [tasks, setTasks] = useState([])
 
 	const newTaskAdded = (task) => {
@@ -12,9 +12,9 @@ const TaskList = () => {
 	}
 
 	return (
-		<section>
+		<section className={darkMode && "bg-gray-800"}>
 			Liste des taches
-			<AddTaskForm callback={newTaskAdded} />
+			<AddTaskForm darkMode={darkMode} callback={newTaskAdded} />
 			<TaskTable taskList={tasks} />
 		</section>
 	)

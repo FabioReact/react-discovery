@@ -1,0 +1,12 @@
+.preferences {
+	min-height: 100vh;
+}
+
+.dark {
+	background-color: #282A36;
+	color: white;
+}
+
+.dark button {
+	border: 1px solid white;
+}

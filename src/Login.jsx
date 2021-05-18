@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const Login = () => {
+const Login = ({ setConnected }) => {
 	const [email, setEmail] = useState('')
 	const [emailError, setEmailError] = useState('')
 	const [password, setPassword] = useState('')
@@ -27,6 +27,12 @@ const Login = () => {
 		}
 		if (password.length < 6) {
 			setPasswordError('Votre mot de passe doit contenir au moins 6 caractères')
+		}
+		if (email === "example@email.com" && password === "example") {
+			// Izoké, on se connecte
+			setConnected(true)
+		} else {
+			// Mauvais email ou mdp
 		}
 	}
 

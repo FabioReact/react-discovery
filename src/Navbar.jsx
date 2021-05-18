@@ -30,7 +30,7 @@ const Navbar = () => {
 				</li>
 				<li className='hover:bg-gray-100'>
 					<Link
-						to='/task'
+						to='/inbox'
 						className='h-16 px-6 flex flex justify-center items-center w-full
 				focus:text-orange-500'
 					>
@@ -134,7 +134,7 @@ const Navbar = () => {
 
 				<li className='hover:bg-gray-100'>
 					<Link
-						to='/'
+						to='/settings'
 						className='h-16 px-6 flex flex justify-center items-center w-full
 				focus:text-orange-500'
 					>

@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react"
+import { useReducer } from "react"
 import { v4 as uuidv4 } from 'uuid';
 import styles from "./addTaskForm.module.css"
 
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
 	}
 }
 
-const AddTaskForm = ({ callback }) => {
+const AddTaskForm = ({ darkMode, callback }) => {
 	const initialState = {
 		newTask: '',
 		newTaskError: false,

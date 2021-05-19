@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import AuthContext from '../context/auth-context'
 
-const Login = ({ setConnected }) => {
+const Login = () => {
+	const authContext = useContext(AuthContext)
 	const [email, setEmail] = useState('')
 	const [emailError, setEmailError] = useState('')
 	const [password, setPassword] = useState('')
 	const [passwordError, setPasswordError] = useState('')
 
+	const history = useHistory()
+
 	useEffect(() => {
-		console.log({ email })
 		if (email.length >= 8) {
 			setEmailError("")
 		}
 	}, [email])
 
 	useEffect(() => {
-		console.log({ password })
 		if (password.length >= 6) {
 			setPasswordError("")
 		}
@@ -30,9 +33,11 @@ const Login = ({ setConnected }) => {
 		}
 		if (email === "example@email.com" && password === "example") {
 			// Izoké, on se connecte
-			setConnected(true)
+			authContext.login()
+			history.push('/inbox')
 		} else {
 			// Mauvais email ou mdp
+			setPasswordError('Mauvais email et/ou mot de passe.')
 		}
 	}
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import AddTaskForm from "./AddTaskForm"
-import TaskTable from "./TaskTable"
+import AddTaskForm from "../components/AddTaskForm"
+import TaskTable from "../components/TaskTable"
 
 const TaskList = ({ darkMode }) => {
 	const [tasks, setTasks] = useState([])
